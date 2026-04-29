@@ -13,7 +13,6 @@
 /deprecated
 /discloud
 /node_modules
-/build
 
 # Files
 /.env.development
