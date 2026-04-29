@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: mdlbot_db
+      POSTGRES_USER: mdlbot_user
+      POSTGRES_PASSWORD: Senha@123 # **IMPORTANT: CHANGE THIS TO A STRONG PASSWORD**
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Optional: expose port to host for direct connection (e.g., with pgAdmin)
+
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    # Optionally, you might want to mount volumes for development with hot-reloading
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules # To prevent host node_modules from overwriting container's
+    # command: bun run dev # Use this for development with hot-reloading if volumes are mounted
+
+volumes:
+  db_data:

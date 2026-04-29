@@ -1,0 +1,55 @@
+{
+  "members": [
+    {
+      "id": "306978576929128460",
+      "guildId": "1483604917980627079",
+      "realName": "Valerian Goes",
+      "characterName": "Goes",
+      "cityId": "34622",
+      "recruiter": "Zayk",
+      "updatedAt": "2026-04-29T19:08:14.901Z",
+      "registrationId": 1
+    },
+    {
+      "id": "1223324174039253127",
+      "guildId": "1483604917980627079",
+      "registrationId": 2,
+      "realName": "Nixy Ariaga",
+      "characterName": "Nixy Ariaga",
+      "cityId": "48314",
+      "updatedAt": "2026-04-29T19:12:15.646Z",
+      "recruiter": "*-*"
+    },
+    {
+      "id": "510923823839969321",
+      "guildId": "1483604917980627079",
+      "registrationId": 3,
+      "realName": "gabriel santos",
+      "characterName": "Bielzada",
+      "cityId": "57422",
+      "updatedAt": "2026-04-29T19:10:45.829Z",
+      "recruiter": "Goes"
+    },
+    {
+      "id": "1429498660584030360",
+      "guildId": "1483604917980627079",
+      "registrationId": 4,
+      "realName": "vitor vysinc",
+      "characterName": "vitor",
+      "cityId": "45755",
+      "updatedAt": "2026-04-29T19:12:19.035Z",
+      "recruiter": "goes"
+    },
+    {
+      "id": "1165695342809980928",
+      "guildId": "1483604917980627079",
+      "registrationId": 5,
+      "realName": "Kayo",
+      "characterName": "fps",
+      "cityId": "43239",
+      "updatedAt": "2026-04-29T19:28:16.394Z",
+      "recruiter": "nixy"
+    }
+  ],
+  "counter": 5
+}

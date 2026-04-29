@@ -1,0 +1,64 @@
+{
+  "colors": {
+    "default": "#2B2D31",
+    "primary": "#3b82f6",
+    "secondary": "#4f545c",
+    "success": "#22c55e",
+    "danger": "#ED4245",
+    "warning": "#fbbd23",
+    "azoxo": "#5865F2",
+    "green": "#57F287",
+    "yellow": "#FEE75C",
+    "fuchsia": "#EB459E",
+    "magic": "#c026d3",
+    "developer": "#3e70dd",
+    "balance": "#45ddc0",
+    "brilliance": "#f07d5f",
+    "nitro": "#ff6bfa",
+    "bravery": "#9c84ef"
+  },
+  "roleRequest": {
+    "requestChannelId": "1499119270494343201",
+    "approvalChannelId": "1499119271538725034",
+    "initialRoleId": "1499119090822938917",
+    "memberRoleId": "1499119087643660411",
+    "recruiterRoleIds": [
+      "1499119078395089196",
+      "1499119076352462859", 
+      "1499119079758364942",
+      "1499121890214805726", 
+      "1499119075371253972", 
+      "1499119077317410926", 
+      "1499122035241259209", 
+      "1499119047713882182", 
+      "1499119048808464556", 
+      "1499119049605386373"
+    ]
+  },
+  "welcome": {
+    "channelId": "1499119219470635018"
+  },
+  "leave": {
+    "channelId": "1499119220946899024"
+  },
+  "ban": {
+    "channelId": "1499119232917573662"
+  },
+  "hierarchy": {
+    "channelId": "1499121358401962044",
+    "roles": [
+      { "id": "1499119047713882182", "prefix": "00", "label": "00" },
+      { "id": "1499119048808464556", "prefix": "01", "label": "01" },
+      { "id": "1499119049605386373", "prefix": "02", "label": "02" },
+      { "id": "1499122035241259209", "prefix": "03", "label": "03" },
+      { "id": "1499119075371253972", "prefix": "G.Geral", "label": "Gerência Geral" },      
+      { "id": "1499121890214805726", "prefix": "G.Vendas", "label": "Gerência Vendas" },
+      { "id": "1499119077317410926", "prefix": "G.Ação", "label": "Gerência Ação" },
+      { "id": "1499119079758364942", "prefix": "G.Elite", "label": "Gerência Elite" },
+      { "id": "1499119076352462859", "prefix": "G.Farm", "label": "Gerência Farm" },
+      { "id": "1499119078395089196", "prefix": "G.Rec", "label": "Gerência Recrutamento" },
+      { "id": "1499119084434882692", "prefix": "Elite", "label": "Membro Elite" },
+      { "id": "1499119087643660411", "prefix": "M", "label": "Membro" }
+    ]
+  }
+}
