@@ -90,9 +90,46 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.GuildScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.GuildChannelScalarFieldEnum = {
+  name: 'name',
+  id: 'id',
+  url: 'url',
+  guildId: 'guildId'
+};
+
+exports.Prisma.MemberScalarFieldEnum = {
+  registrationId: 'registrationId',
+  id: 'id',
+  guildId: 'guildId',
+  realName: 'realName',
+  characterName: 'characterName',
+  cityId: 'cityId',
+  recruiter: 'recruiter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-
+  Guild: 'Guild',
+  GuildChannel: 'GuildChannel',
+  Member: 'Member'
 };
 /**
  * Create the Client
@@ -137,18 +174,18 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "fromEnvVar": null,
+        "value": "file:./dev.db"
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/database/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n",
-  "inlineSchemaHash": "fe0f6054b0edd7050e64303f8db0718538c420a929bf5c25260fed92324e49bd",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/database/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./dev.db\"\n}\n\nmodel Guild {\n  id       String         @id @unique\n  channels GuildChannel[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  members Member[]\n\n  @@map(\"guilds\")\n}\n\nmodel GuildChannel {\n  name String @id\n\n  id  String\n  url String\n\n  guild   Guild  @relation(fields: [guildId], references: [id])\n  guildId String\n\n  @@map(\"guild_channels\")\n}\n\nmodel Member {\n  registrationId Int     @id @default(autoincrement())\n  id             String\n  guildId        String\n  realName       String?\n  characterName  String?\n  cityId         String?\n  recruiter      String?\n\n  guild Guild @relation(fields: [guildId], references: [id])\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([id, guildId])\n  @@map(\"members\")\n}\n",
+  "inlineSchemaHash": "24fd30cdd75ba56340bab775ed965dc471864228ce703bd309196862dc44e7b8",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Guild\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channels\",\"kind\":\"object\",\"type\":\"GuildChannel\",\"relationName\":\"GuildToGuildChannel\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"members\",\"kind\":\"object\",\"type\":\"Member\",\"relationName\":\"GuildToMember\"}],\"dbName\":\"guilds\"},\"GuildChannel\":{\"fields\":[{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToGuildChannel\"},{\"name\":\"guildId\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"guild_channels\"},\"Member\":{\"fields\":[{\"name\":\"registrationId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guildId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"realName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"characterName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cityId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"recruiter\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToMember\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"members\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
@@ -161,9 +198,7 @@ config.engineWasm = {
 config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
-  parsed: {
-    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
-  }
+  parsed: {}
 })
 
 if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined) {

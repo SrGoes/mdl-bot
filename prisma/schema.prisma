@@ -1,9 +1,51 @@
 generator client {
-  provider        = "prisma-client-js"
-  output = "../src/database/prisma"
+  provider = "prisma-client-js"
+  output   = "../src/database/prisma"
 }
 
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
+}
+
+model Guild {
+  id       String         @id @unique
+  channels GuildChannel[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members Member[]
+
+  @@map("guilds")
+}
+
+model GuildChannel {
+  name String @id
+
+  id  String
+  url String
+
+  guild   Guild  @relation(fields: [guildId], references: [id])
+  guildId String
+
+  @@map("guild_channels")
+}
+
+model Member {
+  registrationId Int     @id @default(autoincrement())
+  id             String
+  guildId        String
+  realName       String?
+  characterName  String?
+  cityId         String?
+  recruiter      String?
+
+  guild Guild @relation(fields: [guildId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([id, guildId])
+  @@map("members")
 }

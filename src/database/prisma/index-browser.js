@@ -118,9 +118,46 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.GuildScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.GuildChannelScalarFieldEnum = {
+  name: 'name',
+  id: 'id',
+  url: 'url',
+  guildId: 'guildId'
+};
+
+exports.Prisma.MemberScalarFieldEnum = {
+  registrationId: 'registrationId',
+  id: 'id',
+  guildId: 'guildId',
+  realName: 'realName',
+  characterName: 'characterName',
+  cityId: 'cityId',
+  recruiter: 'recruiter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-
+  Guild: 'Guild',
+  GuildChannel: 'GuildChannel',
+  Member: 'Member'
 };
 
 /**
