@@ -22,7 +22,7 @@
     "@magicyan/discord": "1.7.3",
     "@prisma/client": "6",
     "chalk": "5.6.2",
-    "discord.js": "14.26.2",
+    "discord.js": "14.26.3",
     "zod": "4.1.11"
   },
   "devDependencies": {

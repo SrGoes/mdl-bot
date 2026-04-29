@@ -6,5 +6,5 @@ export const env = await validateEnv(z.looseObject({
     BOT_TOKEN: z.string("Discord Bot Token is required").min(1),
     WEBHOOK_LOGS_URL: z.url().optional(),
     GUILD_ID: z.string().optional(),
-    DATABASE_URL: z.string("Database URL is required").min(1)
+    DATABASE_URL: z.string().optional()
 }));
